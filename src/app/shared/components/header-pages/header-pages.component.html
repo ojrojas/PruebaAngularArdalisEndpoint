@@ -1,0 +1,18 @@
+<mat-card class="header-pages">
+  <mat-card-header>
+    <div class="card-title-header" >
+      <mat-card-title>
+        <mat-icon aria-hidden="false" (click)="back()" class="size-arrow-back-header" aria-label="Example home icon">keyboard_arrow_left</mat-icon>
+        {{headerModel.title}}
+      </mat-card-title>
+    </div>
+    <div class="card-sub-title-header">
+      <mat-card-subtitle class="header-subtitle"><strong>{{headerModel.subtitle}}</strong></mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-actions>
+    <div class="card-actions-buttons-header">
+      <button mat-raised-button color="{{button.color}}" (click)="button.action()" *ngFor="let button of headerModel.buttons; let index">{{button.description}}</button>
+    </div>
+  </mat-card-actions>
+</mat-card>

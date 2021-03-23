@@ -1,0 +1,81 @@
+<form [formGroup]="form" (ngSubmit)="submit()" >
+  <mat-card>
+    <mat-card-content class="form-font-size">
+      <mat-grid-list cols="3" rowHeight="80px">
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input type="hidden" formControlName="id" *ngIf="mode !== 0">
+            <input formControlName="name" matInput placeholder="Nombre">
+            <mat-error *ngIf="form.get('name').invalid">El campo nombre es <strong>requerido</strong></mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Segundo Nombre</mat-label>
+            <input formControlName="middleName" matInput placeholder="Segundo Nombre">
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input formControlName="lastName" matInput placeholder="Apellido">
+            <mat-error *ngIf="form.get('lastName').invalid">El campo apellido es <strong>requerido</strong></mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Segundo Apellido</mat-label>
+            <input formControlName="surName" matInput placeholder="Apellido">
+            <mat-error *ngIf="form.get('surName').invalid">El campo segundo apellido es <strong>requerido</strong></mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Email">
+            <mat-error *ngIf="form.get('email').invalid">El campo email es <strong>requerido</strong></mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="fill">
+            <mat-label>Tipo Identificación</mat-label>
+            <mat-select formControlName="typeIdentificationId" placeholder="Tipo Identificación">
+              <mat-option *ngFor="let typeidentification of (userState | async).typeIdentifications" value="{{typeidentification.id}}">{{typeidentification.description}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('typeIdentificationId').invalid">El campo tipo identificación es <strong>requerido</strong></mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>identification</mat-label>
+            <input formControlName="identification" matInput placeholder="Identificación" type="number">
+            <mat-error *ngIf="form.get('identification').invalid">El campo identificación es <strong>requerido</strong></mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" type="password" matInput placeholder="Password">
+            <mat-error *ngIf="form.get('password').invalid">El campo password es <strong>requerido</strong></mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-slide-toggle  formControlName="state">Estado</mat-slide-toggle>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-divider></mat-divider>
+      <br>
+     <div class="actions-buttons">
+      <button type="button" *ngIf="mode === 0" mat-raised-button color="primary" (click)="submit()">Crear</button>
+      <button type="button" *ngIf="mode === 1" mat-raised-button color="primary" (click)="submit()">Editar</button>
+      <button type="button" *ngIf="mode === 3" mat-raised-button color="primary" (click)="submit()">Eliminar</button>
+      <button type="button" (click)="close()" mat-button color="asscent">Cancelar</button>
+     </div>
+    </mat-card-content>
+  </mat-card>
+</form>

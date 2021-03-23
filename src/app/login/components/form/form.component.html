@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="login-app-container">
+        <mat-card class="form-login-app">
+            <mat-card-header>
+                <mat-card-title>Login App</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-error *ngIf="form.get('email').invalid">El campo username es <strong>requerido</strong></mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password" required>
+                    <mat-error *ngIf="form.get('password').invalid">El campo password es <strong>requerido</strong></mat-error>
+                </mat-form-field>
+                <br>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary">Login</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</form>

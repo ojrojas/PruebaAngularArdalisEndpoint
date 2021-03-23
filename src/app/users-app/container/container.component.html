@@ -1,0 +1,8 @@
+<app-loading [isLoading]="(state$ | async ).isLoading">
+    <app-header-pages [headerModel]="headerUserModel"></app-header-pages>
+    <div class="inner-content">
+        <app-list [applicationUsers]="(state$ | async).applicationUsers" (edit)="edit($event)" (detail)="detail($event)"
+            (delete)="delete($event)">
+        </app-list>
+    </div>
+</app-loading>
